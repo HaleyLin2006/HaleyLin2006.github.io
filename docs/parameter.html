@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parameters &mdash; Astrophysics Early Star Formation @NTHU  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="test module" href="test.html" />
+    <link rel="prev" title="Graphing" href="graphing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Astrophysics Early Star Formation @NTHU
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">ASTR_code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_handler.html">data_handler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphing.html">Graphing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#universal-constants">Universal Constants</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#param.AU"><code class="docutils literal notranslate"><span class="pre">param.AU()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.G"><code class="docutils literal notranslate"><span class="pre">param.G()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.M"><code class="docutils literal notranslate"><span class="pre">param.M()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.M_H"><code class="docutils literal notranslate"><span class="pre">param.M_H()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-condition">Initial Condition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#param.cs"><code class="docutils literal notranslate"><span class="pre">param.cs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.t_acc"><code class="docutils literal notranslate"><span class="pre">param.t_acc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.omega"><code class="docutils literal notranslate"><span class="pre">param.omega()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.time"><code class="docutils literal notranslate"><span class="pre">param.time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.r_env"><code class="docutils literal notranslate"><span class="pre">param.r_env()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.max_tau"><code class="docutils literal notranslate"><span class="pre">param.max_tau()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-for-calculation">Variable for Calculation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#param.sample_pts"><code class="docutils literal notranslate"><span class="pre">param.sample_pts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.sample_range"><code class="docutils literal notranslate"><span class="pre">param.sample_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.theta_pts"><code class="docutils literal notranslate"><span class="pre">param.theta_pts()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-for-graphing">Variable for Graphing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#param.cgs_contour"><code class="docutils literal notranslate"><span class="pre">param.cgs_contour()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.cgs_vmin"><code class="docutils literal notranslate"><span class="pre">param.cgs_vmin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.cgs_vmax"><code class="docutils literal notranslate"><span class="pre">param.cgs_vmax()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.color_1d"><code class="docutils literal notranslate"><span class="pre">param.color_1d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.visser_contour"><code class="docutils literal notranslate"><span class="pre">param.visser_contour()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.visser_vmin"><code class="docutils literal notranslate"><span class="pre">param.visser_vmin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.visser_vmax"><code class="docutils literal notranslate"><span class="pre">param.visser_vmax()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="test.html">test module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Astrophysics Early Star Formation @NTHU</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">ASTR_code</a></li>
+      <li class="breadcrumb-item active">Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/parameter.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="parameters">
+<span id="parameter"></span><h1>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h1>
+<section id="universal-constants">
+<h2>Universal Constants<a class="headerlink" href="#universal-constants" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="param.AU">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">AU</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.AU" title="Permalink to this definition"></a></dt>
+<dd><p>1 Astronomical Unit in cgs = 1.496e+13</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.G">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">G</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.G" title="Permalink to this definition"></a></dt>
+<dd><p>Gravitational constant in cgs = 6.67e-8</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.M">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">M</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.M" title="Permalink to this definition"></a></dt>
+<dd><p>1 Solar Mass in cgs = 1.989e+33</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.M_H">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">M_H</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.M_H" title="Permalink to this definition"></a></dt>
+<dd><p>Mass of Hydrogen in cgs = 1.6733e-24</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="initial-condition">
+<h2>Initial Condition<a class="headerlink" href="#initial-condition" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>Initial condition that can be changed. Here we adopted the case 7 from Visser (2009).</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="param.cs">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">cs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.cs" title="Permalink to this definition"></a></dt>
+<dd><p>Sound Speed in cgs = 0.26*1e5</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.t_acc">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">t_acc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.t_acc" title="Permalink to this definition"></a></dt>
+<dd><p>t_acc given in Visser (2009) = 2.5*1e5*31556926 [s]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.omega">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">omega</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.omega" title="Permalink to this definition"></a></dt>
+<dd><p>Rotation rate = 1e-13</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.time">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.time" title="Permalink to this definition"></a></dt>
+<dd><p>The time to be calculated upon = [0.05*self.t_acc, 0.1*self.t_acc, 0.2*self.t_acc, 0.3*self.t_acc, 0.5*self.t_acc, 0.7*self.t_acc, self.t_acc]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.r_env">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">r_env</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.r_env" title="Permalink to this definition"></a></dt>
+<dd><p>The outer edge of the simulation, where the TSC model breaks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.max_tau">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">max_tau</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.max_tau" title="Permalink to this definition"></a></dt>
+<dd><p>The maximum tau value in TSC model, where to TSC perturbation breaks = 0.01</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="variable-for-calculation">
+<h2>Variable for Calculation<a class="headerlink" href="#variable-for-calculation" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>Formula for smapling points to solve on for simulation</p>
+<p><cite>z_g1_grid = [2/(i+1) for i in np.logspace(param.sample_range, 0, param.sample_pts)]</cite></p>
+<p><cite>z_s1_grid = np.logspace(0, param.sample_range, param.sample_pts)</cite></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="param.sample_pts">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">sample_pts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.sample_pts" title="Permalink to this definition"></a></dt>
+<dd><p>Radial resolution inside and outside of the expansion wave front, separately = 1000</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.sample_range">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">sample_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.sample_range" title="Permalink to this definition"></a></dt>
+<dd><p>Sampling from 1e-x to 1ex = 4</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.theta_pts">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">theta_pts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.theta_pts" title="Permalink to this definition"></a></dt>
+<dd><p>Angular resoliution calculated = 1000</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="variable-for-graphing">
+<h2>Variable for Graphing<a class="headerlink" href="#variable-for-graphing" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><dl class="py function">
+<dt class="sig sig-object py" id="param.cgs_contour">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">cgs_contour</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.cgs_contour" title="Permalink to this definition"></a></dt>
+<dd><p>Contour value for cgs graph = 1e-18</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.cgs_vmin">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">cgs_vmin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.cgs_vmin" title="Permalink to this definition"></a></dt>
+<dd><p>Minimum value for colormap for cgs graph = 1e-22</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.cgs_vmax">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">cgs_vmax</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.cgs_vmax" title="Permalink to this definition"></a></dt>
+<dd><p>Maximum value for colormap for cgs graph = 1e-</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.color_1d">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">color_1d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.color_1d" title="Permalink to this definition"></a></dt>
+<dd><p>Color Value for different time graphed = [‘blue’, ‘orange’, ‘green’, ‘red’, ‘purple’, ‘cyan’, ‘grey’]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.visser_contour">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">visser_contour</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.visser_contour" title="Permalink to this definition"></a></dt>
+<dd><p>Contour value for density of hydrogen graph = 1e6</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.visser_vmin">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">visser_vmin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.visser_vmin" title="Permalink to this definition"></a></dt>
+<dd><p>Minimum value for colormap for density of hydrogen graph = 1e4</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="param.visser_vmax">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">visser_vmax</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#param.visser_vmax" title="Permalink to this definition"></a></dt>
+<dd><p>Maximum value for colormap for density of hydrogen graph = 1e9</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="graphing.html" class="btn btn-neutral float-left" title="Graphing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="test.html" class="btn btn-neutral float-right" title="test module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Haley Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
