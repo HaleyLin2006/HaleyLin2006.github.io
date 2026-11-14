@@ -115,7 +115,7 @@ export const papers: Paper[] = [
     links: [
       { label: 'PDF', href: '/Charitable%20Ladies%20Female%20Financial%20Independence%201840s.pdf' },
       { label: 'Poster', href: '/Econ%20455%20Charitable%20Ladies.pdf' },
-      { label: 'Code', href: '#' },
+      { label: 'Code', href: 'https://github.com/HaleyLin2006/ECON455_Charitable_Ladies' },
     ],
     selected: true,
   },
