@@ -1,0 +1,38 @@
+---
+import { site } from '../site';
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path.startsWith(href);
+---
+
+<header class="site-header">
+  <a class="site-name" href="/">{site.name}</a>
+  <nav aria-label="Main">
+    {
+      site.nav.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+    <button id="theme-toggle" type="button" aria-label="Switch between light and dark mode">
+      <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+        <path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"></path>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<script>
+  const root = document.documentElement;
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      // Storage can be unavailable (private mode); the toggle still works for this page.
+    }
+  });
+</script>

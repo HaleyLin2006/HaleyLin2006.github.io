@@ -1,0 +1,66 @@
+---
+// One paper as a card: title, authors, supervisors, then a line with
+// date | venue | tags. Clicking the card opens the abstract and links.
+import 'katex/dist/katex.min.css';
+import { tagColor, type Paper } from '../data/research';
+import { latexToHtml } from '../lib/latex';
+
+interface Props {
+  paper: Paper;
+}
+
+const { paper } = Astro.props;
+const tags = paper.tags ?? [];
+const hasDetails = Boolean(paper.abstract) || (paper.links?.length ?? 0) > 0;
+const Wrapper = hasDetails ? 'details' : 'div';
+const Head = hasDetails ? 'summary' : 'div';
+---
+
+<li class="filter-item" data-tags={tags.join('|')}>
+  <Wrapper class="research-card">
+    <Head class="card-head">
+      <h3 class="card-title">{paper.title}</h3>
+      <p class="card-authors">{paper.authors.join(', ')}</p>
+      {
+        paper.supervisors && paper.supervisors.length > 0 && (
+          <p class="card-supervisors">
+            <em>Supervised by {paper.supervisors.join(', ')}</em>
+          </p>
+        )
+      }
+      <div class="card-info">
+        <span>{paper.date}</span>
+        {paper.venue && <span class="card-venue">{paper.venue}</span>}
+        {
+          tags.length > 0 && (
+            <span class="card-tags">
+              {tags.map((tag) => (
+                <span class={`tag tag-${tagColor(tag)}`}>{tag}</span>
+              ))}
+            </span>
+          )
+        }
+      </div>
+      {hasDetails && <span class="card-chevron" aria-hidden="true" />}
+    </Head>
+
+    {
+      hasDetails && (
+        <div class="card-details">
+          {paper.abstract && <p class="card-abstract" set:html={latexToHtml(paper.abstract)} />}
+          {paper.links && paper.links.length > 0 && (
+            <ul class="card-links">
+              {paper.links.map((link) => (
+                <li>
+                  <a class="btn-ghost" href={link.href}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )
+    }
+  </Wrapper>
+</li>

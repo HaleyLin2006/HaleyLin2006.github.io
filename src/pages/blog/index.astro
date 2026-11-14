@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import TagFilter from '../../components/TagFilter.astro';
+import { allTags, getPosts, type Post } from '../../lib/posts';
+
+const posts = await getPosts();
+// Most-used tags first.
+const tags = allTags(posts)
+  .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag))
+  .map((entry) => entry.tag);
+
+// Group posts by year, newest year first.
+const byYear = new Map<number, Post[]>();
+for (const post of posts) {
+  const year = post.data.date.getUTCFullYear();
+  byYear.set(year, [...(byYear.get(year) ?? []), post]);
+}
+const years = [...byYear.entries()].sort((a, b) => b[0] - a[0]);
+---
+
+<Base title="Blog" description="Notes and essays on economics and other things.">
+  <h1>Blog</h1>
+  <p class="muted">Notes and essays: things I am learning, reading and thinking about.</p>
+
+  <TagFilter tags={tags} empty="No posts have all of the selected tags." />
+
+  {posts.length === 0 && <p>No posts yet.</p>}
+
+  {
+    years.map(([year, yearPosts]) => (
+      <section class="research-group filter-group">
+        <h2 id={String(year)}>{year}</h2>
+        <ul class="research-cards">
+          {yearPosts.map((post) => (
+            <PostCard post={post} />
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

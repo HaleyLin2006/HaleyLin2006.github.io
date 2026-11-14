@@ -1,0 +1,84 @@
+---
+// Row of tag buttons. Selecting tags shows only the items (class "filter-item",
+// with data-tags="a|b") that have every selected tag, and hides any
+// "filter-group" left empty. Shown only when JavaScript runs.
+import { tagColor } from '../data/research';
+
+interface Props {
+  tags: string[];
+  /** Message shown when nothing matches. */
+  empty?: string;
+}
+
+const { tags, empty = 'Nothing has all of the selected tags.' } = Astro.props;
+---
+
+{
+  tags.length > 0 && (
+    <div class="tag-filter" role="group" aria-label="Filter by tag" hidden>
+      <span class="tag-filter-label">Filter</span>
+      {tags.map((tag) => (
+        <button type="button" class={`tag tag-${tagColor(tag)}`} data-tag={tag} aria-pressed="false">
+          {tag}
+        </button>
+      ))}
+      <button type="button" class="tag-filter-clear" hidden>
+        Clear
+      </button>
+      <p class="tag-filter-empty muted small" hidden>{empty}</p>
+    </div>
+  )
+}
+
+<script>
+  const panel = document.querySelector<HTMLElement>('.tag-filter');
+  if (panel) {
+    panel.hidden = false;
+    const buttons = [...panel.querySelectorAll<HTMLButtonElement>('button[data-tag]')];
+    const clear = panel.querySelector<HTMLButtonElement>('.tag-filter-clear')!;
+    const empty = panel.querySelector<HTMLElement>('.tag-filter-empty')!;
+    const selected = new Set<string>();
+
+    const apply = () => {
+      for (const button of buttons) {
+        button.setAttribute('aria-pressed', String(selected.has(button.dataset.tag!)));
+      }
+      clear.hidden = selected.size === 0;
+
+      for (const item of document.querySelectorAll<HTMLElement>('.filter-item')) {
+        const tags = (item.dataset.tags ?? '').split('|');
+        item.hidden = ![...selected].every((tag) => tags.includes(tag));
+      }
+      // Hide sections that are left with nothing visible (innermost first).
+      const groups = [...document.querySelectorAll<HTMLElement>('.filter-group')].reverse();
+      for (const group of groups) {
+        group.hidden = !group.querySelector('.filter-item:not([hidden])');
+      }
+      empty.hidden = Boolean(document.querySelector('.filter-item:not([hidden])'));
+
+      const url = new URL(location.href);
+      url.searchParams.delete('tag');
+      for (const tag of selected) url.searchParams.append('tag', tag);
+      history.replaceState(null, '', url);
+    };
+
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        const tag = button.dataset.tag!;
+        if (selected.has(tag)) selected.delete(tag);
+        else selected.add(tag);
+        apply();
+      });
+    }
+    clear.addEventListener('click', () => {
+      selected.clear();
+      apply();
+    });
+
+    const known = new Set(buttons.map((button) => button.dataset.tag!));
+    for (const tag of new URLSearchParams(location.search).getAll('tag')) {
+      if (known.has(tag)) selected.add(tag);
+    }
+    if (selected.size > 0) apply();
+  }
+</script>

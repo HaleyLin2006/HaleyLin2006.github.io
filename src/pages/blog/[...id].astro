@@ -1,0 +1,74 @@
+---
+import { render } from 'astro:content';
+import 'katex/dist/katex.min.css';
+import Base from '../../layouts/Base.astro';
+import { formatDate, getPosts, readingTime, tagSlug, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+const minutes = readingTime(post.body);
+---
+
+<Base title={post.data.title} description={post.data.description} type="article">
+  <article>
+    <header class="post-header">
+      <h1>{post.data.title}</h1>
+      <p class="post-meta">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        · {minutes} min read
+        {post.data.draft && <Fragment> · Draft</Fragment>}
+        {
+          post.data.tags.length > 0 && (
+            <Fragment>
+              {' · '}
+              {post.data.tags.map((tag, i) => (
+                <Fragment>
+                  {i > 0 && ', '}
+                  <a href={`/blog/tags/${tagSlug(tag)}/`}>{tag}</a>
+                </Fragment>
+              ))}
+            </Fragment>
+          )
+        }
+      </p>
+      {
+        post.data.updated && (
+          <p class="post-meta">Updated {formatDate(post.data.updated)}</p>
+        )
+      }
+    </header>
+
+    {
+      toc.length >= 3 && (
+        <details class="toc">
+          <summary>Contents</summary>
+          <ol>
+            {toc.map((heading) => (
+              <li class={`depth-${heading.depth}`}>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ol>
+        </details>
+      )
+    }
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="post-footer">
+      <a href="/blog/">← All posts</a>
+    </footer>
+  </article>
+</Base>

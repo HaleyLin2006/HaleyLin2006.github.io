@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+import { cv } from '../data/cv';
+---
+
+<Base title="CV" description={`Curriculum vitae of ${site.name}.`}>
+  <h1>Curriculum vitae</h1>
+  <p class="muted">
+    {site.role}, {site.affiliation} · <a href={`mailto:${site.email}`}>{site.email}</a>
+    {
+      site.cvPdf && (
+        <Fragment>
+          {' '}
+          · <a href={site.cvPdf}>Download PDF</a>
+        </Fragment>
+      )
+    }
+  </p>
+
+  {
+    cv.map((section) => (
+      <section>
+        <h2 class="label">{section.heading}</h2>
+        {section.entries.map((entry) => (
+          <div class="cv-entry">
+            <div>
+              {entry.org ? (
+                <Fragment>
+                  <div>{entry.org}</div>
+                  <div class="cv-secondary">
+                    {entry.title}{entry.supervisor && ` · Supervisor: ${entry.supervisor}`}
+                  </div>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <span>{entry.title}</span>
+                  {entry.supervisor && <div class="cv-secondary">Supervisor: {entry.supervisor}</div>}
+                </Fragment>
+              )}
+            </div>
+            <div class="cv-date">{entry.date}</div>
+            {entry.details && entry.details.length > 0 && (
+              <ul>
+                {entry.details.map((line) => (
+                  <li>{line}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </section>
+    ))
+  }
+</Base>
