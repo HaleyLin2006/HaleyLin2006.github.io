@@ -113,8 +113,8 @@ export const papers: Paper[] = [
     abstract:
       'Under coverture, married women in nineteenth-century America faced severe restrictions on property ownership, contracting, and control over earnings. While household-level data are limited in this period, I propose using charitable giving as a first step toward a more comprehensive assessment of female intra-household financial agency in the 1840s Northeast United States. I interpret female charitable donations through a household bargaining model and compile a new dataset from the Missionary Herald to test whether (1) wealthier and more educated states have higher female donation shares and (2) the female donation share increases after the Act. However, the results do not support the two hypotheses, since household characteristics cannot be adequately controlled by state-level covariates.',
     links: [
-      { label: 'PDF', href: 'public/Charitable Ladies Female Financial Independence 1840s.pdf' },
-      { label: 'Poster', href: 'public/Econ 455 Charitable Ladies.pdf' },
+      { label: 'PDF', href: '/Charitable%20Ladies%20Female%20Financial%20Independence%201840s.pdf' },
+      { label: 'Poster', href: '/Econ%20455%20Charitable%20Ladies.pdf' },
       { label: 'Code', href: '#' },
     ],
     selected: true,
@@ -130,7 +130,7 @@ export const papers: Paper[] = [
     abstract:
       'Entropy, originally as a concept in thermodynamics, was introduced for information theory by C. Shannon (1948). As a result, an entropy view of probability distribution was developed. In 1985, A. Barron gave a proof of the Central Limit Theorem based on inequalities of entropy and Fisher information. The information-theoretic approach offers a cardinal comparison of probability distributions, providing an alternative description of their convergence. These results are ensured by the convexity of entropy. This expository paper reviews the foundation of information descriptions of probability theory.',
     links: [
-      { label: 'PDF', href: 'public/An Entropy View of the Central Limit Theorem.pdf' },
+      { label: 'PDF', href: '/An%20Entropy%20View%20of%20the%20Central%20Limit%20Theorem.pdf' },
     ],
     selected: true,
   },

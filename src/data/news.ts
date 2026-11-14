@@ -15,11 +15,11 @@ export interface NewsItem {
 export const news: NewsItem[] = [
   {
     date: '2026-11',
-    text: 'Launched this website.',
+    text: 'The website is now live! I will be posting my research and writing here.',
   },
   {
     date: '2026-10',
-    text: 'Submitted a paper on causal inference to <em>AISTATS 2027</em>.',
+    text: 'Submitted my first ever paper to <em>AISTATS 2027</em>!',
     links: [{ label: 'Research', href: '/research/#research' }],
   },
   {
