@@ -23,7 +23,7 @@ export const site = {
   // Simple HTML works: <mark>purple highlight</mark>, <strong>bold</strong>,
   // <em>italic</em>, <a href="...">link</a>.
   bio: [
-    "I'm an undergraduate from Taiwan studying <strong>Economics and Statistics at Williams College (Class of 2029)</strong>. I believe AI should enhance, rather than subvert, decisions making ability of the society. I have not yet settled on my direction, but I'm interested in <strong>application of AI with theoretical guarantees</strong> and <strong>its macroeconomic consequences</strong>.",
+    "I'm an undergraduate from Taiwan studying <strong>Economics and Statistics at Williams College (Class of 2029)</strong>. I believe AI should enhance, rather than subvert, human decisions-making. I'm not certain what role will I play in the future, but I'm interested in <strong>application of AI with theoretical guarantees</strong> and <strong>its macroeconomic consequences</strong>.",
 
     "I plan to pursue a PhD in macroeconomics or AI. This site collects my research, along with a blog where I think out loud about whatever else I'm reading.",
     
