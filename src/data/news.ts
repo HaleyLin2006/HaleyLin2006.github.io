@@ -15,6 +15,16 @@ export interface NewsItem {
 export const news: NewsItem[] = [
   {
     date: '2026-11',
+    text: 'New Post! <a href="/blog/haley-twelve-favorite-questions/">Haley’s Twelve Favorite Questions</a>',
+    links: [{ label: 'Blog', href: '/blog/' }],
+  },
+  {
+    date: '2026-11',
+    text: 'New Post! <a href="/blog/mun/">MUN Background Guide Archive</a>',
+    links: [{ label: 'Blog', href: '/blog/' }],
+  },
+  {
+    date: '2026-11',
     text: 'The website is now live! I will be posting my research and writing here.',
   },
   {

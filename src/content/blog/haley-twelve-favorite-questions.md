@@ -32,6 +32,7 @@ Feynmann has his twelve favorite questions that he keeps in his mind. Right now,
 
 6. **Miracle Economies** 
 
----
+<!-- ---
 
-Ver 1: Nov. 2026
+Past Questions: -->
+
