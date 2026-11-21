@@ -1111,3 +1111,71 @@ a.post-card:hover .card-title {
     display: none;
   }
 }
+
+/* Hover notes: <span class="hover-note">term<span class="hover-note-pop">…</span></span> */
+.hover-note {
+  position: relative;
+  text-decoration: underline dotted var(--muted);
+  text-underline-offset: 0.2em;
+  cursor: help;
+}
+
+.hover-note-pop {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 10;
+  width: min(24rem, calc(100vw - 2rem));
+  margin-top: 0.4rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  cursor: auto;
+  display: none; /* not just hidden, so it can't widen the page on phones */
+}
+
+/* invisible bridge so the pointer can move into the popup to click links */
+.hover-note-pop::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -0.5rem;
+  height: 0.5rem;
+}
+
+.hover-note:hover .hover-note-pop,
+.hover-note:focus-within .hover-note-pop {
+  display: block;
+}
+
+/* Collapsible AI summaries in posts: <details class="ai-summary"> */
+details.ai-summary {
+  margin: 0 0 1.2rem;
+}
+
+/* pull the toggle up against the overview paragraph above it */
+p:has(+ details.ai-summary) {
+  margin-bottom: 0.25rem;
+}
+
+details.ai-summary > summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.9rem;
+  width: fit-content;
+}
+
+details.ai-summary > summary:hover {
+  color: var(--accent);
+}
+
+details.ai-summary[open] {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--rule);
+}

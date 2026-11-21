@@ -73,7 +73,7 @@ export const categories: {
     ],
   },
   {
-    heading: 'Writing Samples',
+    heading: 'Other Writing Samples',
     sectionHeadings: false,
     sections: [
       { type: 'writing_sample', heading: 'Writing samples' },
