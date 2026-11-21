@@ -15,8 +15,8 @@ Feynmann has his twelve favorite questions that he keeps in his mind. Right now,
       
 2. **Explainable AI for Science**: A principled, end-to-end explanation of why neural networks succeed remains elusive. However, many by-products of research on explainable AI may be immediately useful for scientific discovery. For example, [Radhakrishnan et al. (2025)](https://doi.org/10.1073/pnas.2509860122) show that neural networks trained by gradient descent implicitly compute the Hilbert–Schmidt Independence Criterion (HSIC), a kernel-based generalization of covariance. Building on this, they develop a scalable measure of dependence that can detect relationships among tens of thousands of variables across millions of samples.
 
-   How can we explain the immense predictive gains of modern AI in terms of the data and the architecture? How can understanding modern AI systems inform science, and vice versa? I am interested in developing explainable AI techniques within specific scientific settings, and think about how applications in these settings inform us how neural networks work.
- 
+    How can we explain the immense predictive gains of modern AI in terms of the data and the architecture? How can understanding modern AI systems inform science, and vice versa? I am interested in developing explainable AI techniques within specific scientific settings, and think about how applications in these settings inform us how neural networks work.
+
 3. **Macroeconmics of Technology**
 
 <!-- - employment and creation of new tasks
@@ -31,6 +31,8 @@ Feynmann has his twelve favorite questions that he keeps in his mind. Right now,
 5. **Economics of Staggered AI Frontier**
 
 6. **Miracle Economies** 
+
+7. **"Common but Differentiated" Development and Climate Policy**
 
 <!-- ---
 

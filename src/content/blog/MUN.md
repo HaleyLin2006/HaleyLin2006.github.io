@@ -82,7 +82,23 @@ Please contact me (hl17 at williams.edu) if you believe there's any copyrights i
 
     </details>
 
-6. **中華民國立法院 交通委員會, 人工智慧基本法, 模擬立法院 2024, with Aisa Huang and Isa Chou**
+6. **UNGA, The Right to Development, PMUN 2025, with Michael Zhuang**
+
+    - [Background Guide](/MUN/Phoenix%20MUN%20X%20General%20Assembly%20Background%20Guide.pdf)
+
+    **AI Summary**
+
+    The General Assembly debates what the right to development actually means in practice. The 1986 Declaration on the Right to Development (Res. 41/128) passed 146–1, with the United States the lone vote against and 8 abstentions. The guide warns that the debate will be political and position-based, not solution-based, and will split roughly along developed and developing lines.
+    <details class="ai-summary">
+    <summary>Details</summary>
+
+    - *The issue:* The right to development grew out of the Cold War split between the two Covenants (ICCPR and ICESCR), Kéba M'Baye's 1972 argument that the North owes the South compensation for colonial-era trade advantages, and the failed New International Economic Order (NIEO), which never got past GA resolutions. There are three subtopics. *Development financing* covers the Secretary-General's call for a USD 500 billion annual SDG stimulus and an SDG financing gap of about USD 4.2 trillion a year. *Debt* covers 18 sovereign defaults across 10 developing countries since COVID, a record USD 443.5 billion in external debt payments in 2022, and the non-binding Guiding Principles on Foreign Debt and Human Rights. *Representation* covers the IMF and World Bank, where 68 low- and middle-income countries with 21.7% of the world's population hold only 5.3% of IMF voting power.
+    - *Major parties:* Most developed countries, especially in the Western European and Others Group, vote against or abstain on right-to-development resolutions. They want it to stay "soft law" and fear a "right to everything" that obliges them to pay. Moderates such as Germany support the idea but abstain, so that repeated yes votes don't harden it into customary law. The United States will discuss an individual's right to development but not a state's, because nations don't hold human rights. On the other side, the Non-Aligned Movement and the African Union (backed by ASEAN and CARICOM) treat it as a collective right of peoples, rooted in the 1981 Banjul Charter, South-South cooperation and the Monterrey Consensus. A NAM draft at the 57th Human Rights Council stressing realization "at the international level" was rejected.
+    - *The central argument:* Is the right to development "national" or "international"? Developing countries read it as a duty of international cooperation: aid, debt relief, technology transfer and reform of the IMF and World Bank. Developed countries point to Article 3 (states bear primary responsibility for their own development) and Article 2 (the human person, not the state, is the beneficiary). Delegates have to argue from treaties and legal instruments for the legal basis, or lack of one, for claims that rich countries must pay.
+
+    </details>
+
+7. **中華民國立法院 交通委員會, 人工智慧基本法, 模擬立法院 2024, with Aisa Huang and Isa Chou**
 
     - [Background Guide (背景文件)](/MUN/MLY%202024%20TransCon_%E8%83%8C%E6%99%AF%E6%96%87%E4%BB%B6%E7%B5%82%E7%A8%BF.pdf)
 
@@ -97,8 +113,6 @@ Please contact me (hl17 at williams.edu) if you believe there's any copyrights i
     - *核心爭點：* 政府如何平衡產業發展與監管？作為「基本法」，應規範到多細，又該保留多少彈性？背景文件指出，問責將是最大爭點：民眾黨版採「推定過失」與「推定因果關係」（參照歐盟《人工智慧責任指令草案》），國科會版留待未來標準訂定，國民黨版則無相關條文。若自駕車發生事故，舉證責任該由誰承擔？
 
     </details>
-
-7. **UNGA, The Right to Development, PMUN 2025, with Michael Zhuang**
 
 8. **UNSC, Questions Concerning Haiti, MDMUN 2024, with Andy Lin and Christopher Wang**
 
