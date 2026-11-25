@@ -1,11 +1,9 @@
 ---
 import { site } from '../site';
-import { getLang } from '../i18n';
-const lang = getLang(Astro.url);
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <span>© {year} {site.name}</span>
-  <span><a href={lang === 'zh' ? '/zh/rss.xml' : '/rss.xml'}>RSS</a></span>
+  <span><a href="/rss.xml">RSS</a></span>
 </footer>

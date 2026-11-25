@@ -3,7 +3,6 @@
 // with data-tags="a|b") that have every selected tag, and hides any
 // "filter-group" left empty. Shown only when JavaScript runs.
 import { tagColor } from '../data/research';
-import { getLang, t, term } from '../i18n';
 
 interface Props {
   tags: string[];
@@ -11,22 +10,20 @@ interface Props {
   empty?: string;
 }
 
-const lang = getLang(Astro.url);
-const text = t(lang);
-const { tags, empty = text.filterEmpty } = Astro.props;
+const { tags, empty = 'Nothing has all of the selected tags.' } = Astro.props;
 ---
 
 {
   tags.length > 0 && (
-    <div class="tag-filter" role="group" aria-label={text.filterBy} hidden>
-      <span class="tag-filter-label">{text.filter}</span>
+    <div class="tag-filter" role="group" aria-label="Filter by tag" hidden>
+      <span class="tag-filter-label">Filter</span>
       {tags.map((tag) => (
         <button type="button" class={`tag tag-${tagColor(tag)}`} data-tag={tag} aria-pressed="false">
-          {term(tag, lang)}
+          {tag}
         </button>
       ))}
       <button type="button" class="tag-filter-clear" hidden>
-        {text.clear}
+        Clear
       </button>
       <p class="tag-filter-empty muted small" hidden>{empty}</p>
     </div>

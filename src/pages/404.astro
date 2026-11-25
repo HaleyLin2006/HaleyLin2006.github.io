@@ -1,5 +1,11 @@
 ---
-import NotFound from '../views/NotFound.astro';
+import Base from '../layouts/Base.astro';
 ---
 
-<NotFound />
+<Base title="Page not found">
+  <h1>Page not found</h1>
+  <p>
+    That page does not exist, or it has moved. Try the <a href="/">home page</a> or the
+    <a href="/blog/">blog</a>.
+  </p>
+</Base>

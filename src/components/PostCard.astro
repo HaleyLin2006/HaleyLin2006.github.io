@@ -2,8 +2,7 @@
 // One blog post as a card, styled like the research cards. The whole card
 // links to the post: title, then date | reading time | tags, then the description.
 import { tagColor } from '../data/research';
-import { formatDate, isChinese, readingTime, type Post } from '../lib/posts';
-import { getLang, htmlLang, localize, t, term } from '../i18n';
+import { formatDate, readingTime, type Post } from '../lib/posts';
 
 interface Props {
   post: Post;
@@ -11,24 +10,20 @@ interface Props {
 
 const { post } = Astro.props;
 const { title, date, description, tags } = post.data;
-const lang = getLang(Astro.url);
-const text = t(lang);
-// An untranslated post keeps its own language (e.g. a Chinese post on the English site).
-const postLang = isChinese(title) ? htmlLang.zh : htmlLang.en;
 ---
 
 <li class="filter-item" data-tags={tags.join('|')}>
-  <a class="research-card post-card" href={localize(`/blog/${post.id}/`, lang)} lang={postLang === htmlLang[lang] ? undefined : postLang}>
+  <a class="research-card post-card" href={`/blog/${post.id}/`}>
     <div class="card-head">
       <h3 class="card-title">{title}</h3>
       <div class="card-info">
-        <time datetime={date.toISOString()}>{formatDate(date, true, lang)}</time>
-        <span>{text.minRead(readingTime(post.body))}</span>
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        <span>{readingTime(post.body)} min read</span>
         {
           tags.length > 0 && (
             <span class="card-tags">
               {tags.map((tag) => (
-                <span class={`tag tag-${tagColor(tag)}`} lang={htmlLang[lang]}>{term(tag, lang)}</span>
+                <span class={`tag tag-${tagColor(tag)}`}>{tag}</span>
               ))}
             </span>
           )

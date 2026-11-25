@@ -1,10 +1,5 @@
 ---
-import { siteFor } from '../site';
-import { getLang, t } from '../i18n';
-
-const lang = getLang(Astro.url);
-const site = siteFor(lang);
-const text = t(lang);
+import { site } from '../site';
 
 // Icon paths (24×24). Brand marks from Simple Icons (CC0).
 const icons: Record<string, string> = {
@@ -28,23 +23,23 @@ const lastName = parts.pop();
 const givenNames = parts.join(' ');
 
 const links = [
-  { label: text.cv, href: site.cvPdf || '/cv/', icon: 'cv' },
+  { label: 'CV', href: site.cvPdf || '/cv/', icon: 'cv' },
   ...site.links,
-  { label: `${text.email}${lang === 'zh' ? '：' : ': '}${site.email}`, href: `mailto:${site.email}`, icon: 'email' },
+  { label: `Email: ${site.email}`, href: `mailto:${site.email}`, icon: 'email' },
 ];
 ---
 
 <aside class="profile">
   {
     site.photo ? (
-      <img class="profile-photo" src={site.photo} alt={text.photoOf(site.name)} />
+      <img class="profile-photo" src={site.photo} alt={`Photo of ${site.name}`} />
     ) : (
       <div class="profile-photo is-placeholder" role="img" aria-label="Photo placeholder">
         <svg viewBox="0 0 24 24" width="56" height="56" aria-hidden="true">
           <circle cx="12" cy="8.5" r="4" fill="currentColor" />
           <path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5z" fill="currentColor" />
         </svg>
-        <span>{text.photoPlaceholder}</span>
+        <span>Your photo here</span>
       </div>
     )
   }

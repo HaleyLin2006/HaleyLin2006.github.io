@@ -1,6 +1,5 @@
 ---
 import { formatDate, type Post } from '../lib/posts';
-import { getLang, localize } from '../i18n';
 
 interface Props {
   posts: Post[];
@@ -8,15 +7,14 @@ interface Props {
 }
 
 const { posts, withYear = true } = Astro.props;
-const lang = getLang(Astro.url);
 ---
 
 <ul class="rows">
   {
     posts.map((post) => (
       <li>
-        <a href={localize(`/blog/${post.id}/`, lang)}>{post.data.title}</a>
-        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, withYear, lang)}</time>
+        <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, withYear)}</time>
       </li>
     ))
   }

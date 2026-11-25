@@ -1,37 +1,21 @@
 ---
-import { siteFor } from '../site';
-import { getLang, htmlLang, localize, switchPath, t } from '../i18n';
+import { site } from '../site';
 
-const lang = getLang(Astro.url);
-const site = siteFor(lang);
-const text = t(lang);
-const other = lang === 'zh' ? 'en' : 'zh';
 const path = Astro.url.pathname;
 const isActive = (href: string) => path === href || path.startsWith(href);
-const nav = site.nav.map((item) => ({ ...item, href: localize(item.href, lang) }));
 ---
 
 <header class="site-header">
-  <a class="site-name" href={localize('/', lang)}>{site.name}</a>
-  <nav aria-label={text.mainNav}>
+  <a class="site-name" href="/">{site.name}</a>
+  <nav aria-label="Main">
     {
-      nav.map((item) => (
+      site.nav.map((item) => (
         <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
           {item.label}
         </a>
       ))
     }
-    <a
-      class="lang-toggle"
-      href={switchPath(path, other)}
-      hreflang={htmlLang[other]}
-      lang={htmlLang[other]}
-      title={text.switchTitle}
-      aria-label={text.switchTitle}
-    >
-      {text.switchLabel}
-    </a>
-    <button id="theme-toggle" type="button" aria-label={text.themeToggle}>
+    <button id="theme-toggle" type="button" aria-label="Switch between light and dark mode">
       <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true">
         <circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
         <path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"></path>

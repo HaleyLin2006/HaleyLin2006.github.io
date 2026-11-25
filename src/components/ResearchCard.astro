@@ -4,18 +4,13 @@
 import 'katex/dist/katex.min.css';
 import { tagColor, type Paper } from '../data/research';
 import { latexToHtml } from '../lib/latex';
-import { getLang, localDate, t, term } from '../i18n';
 
 interface Props {
   paper: Paper;
 }
 
 const { paper } = Astro.props;
-const lang = getLang(Astro.url);
-const text = t(lang);
 const tags = paper.tags ?? [];
-const venue = (lang === 'zh' && paper.venueZh) || paper.venue;
-const abstract = (lang === 'zh' && paper.abstractZh) || paper.abstract;
 const hasDetails = Boolean(paper.abstract) || (paper.links?.length ?? 0) > 0;
 const Wrapper = hasDetails ? 'details' : 'div';
 const Head = hasDetails ? 'summary' : 'div';
@@ -29,18 +24,18 @@ const Head = hasDetails ? 'summary' : 'div';
       {
         paper.supervisors && paper.supervisors.length > 0 && (
           <p class="card-supervisors">
-            <em>{text.supervisedBy}{lang === 'zh' ? '' : ' '}{paper.supervisors.join(lang === 'zh' ? '、' : ', ')}</em>
+            <em>Supervised by {paper.supervisors.join(', ')}</em>
           </p>
         )
       }
       <div class="card-info">
-        <span>{localDate(paper.date, lang)}</span>
-        {venue && <span class="card-venue">{venue}</span>}
+        <span>{paper.date}</span>
+        {paper.venue && <span class="card-venue">{paper.venue}</span>}
         {
           tags.length > 0 && (
             <span class="card-tags">
               {tags.map((tag) => (
-                <span class={`tag tag-${tagColor(tag)}`}>{term(tag, lang)}</span>
+                <span class={`tag tag-${tagColor(tag)}`}>{tag}</span>
               ))}
             </span>
           )
@@ -52,13 +47,13 @@ const Head = hasDetails ? 'summary' : 'div';
     {
       hasDetails && (
         <div class="card-details">
-          {abstract && <p class="card-abstract" set:html={latexToHtml(abstract)} />}
+          {paper.abstract && <p class="card-abstract" set:html={latexToHtml(paper.abstract)} />}
           {paper.links && paper.links.length > 0 && (
             <ul class="card-links">
               {paper.links.map((link) => (
                 <li>
                   <a class="btn-ghost" href={link.href}>
-                    {term(link.label, lang)}
+                    {link.label}
                   </a>
                 </li>
               ))}
