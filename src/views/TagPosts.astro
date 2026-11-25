@@ -1,0 +1,25 @@
+---
+// All posts with one tag. Used by src/pages/blog/tags/[tag].astro and its /zh/ copy.
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import type { Post } from '../lib/posts';
+import { getLang, localize, t, term } from '../i18n';
+
+interface Props {
+  tag: string;
+  posts: Post[];
+}
+
+const { tag, posts } = Astro.props;
+const lang = getLang(Astro.url);
+const text = t(lang);
+const name = term(tag, lang);
+---
+
+<Base title={text.taggedTitle(name)} description={text.taggedDescription(name)}>
+  <h1>{text.taggedTitle(name)}</h1>
+  <ul class="research-cards tag-page-cards">
+    {posts.map((post) => <PostCard post={post} />)}
+  </ul>
+  <p class="more"><a href={localize('/blog/', lang)}>{text.allPosts}</a></p>
+</Base>

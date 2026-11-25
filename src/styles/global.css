@@ -228,6 +228,19 @@ mark {
   color: var(--ink);
 }
 
+/* 中文 / EN switch: a small pill next to the theme button. */
+.site-header nav a.lang-toggle {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.05rem 0.55rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.site-header nav a.lang-toggle:hover {
+  border-color: currentColor;
+}
+
 #theme-toggle {
   appearance: none;
   background: none;

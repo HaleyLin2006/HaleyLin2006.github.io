@@ -52,3 +52,31 @@ export const site = {
     { label: 'CV', href: '/cv.pdf' },
   ],
 };
+
+// The Chinese (繁體中文) version of the site, shown at /zh/. Anything left out
+// here uses the English value above. Links in `nav` are turned into their /zh/
+// versions automatically.
+export const siteZh: Partial<typeof site> = {
+  description: 'Haley (Yu-Heng) Lin 的個人網站：總體經濟學相關的研究與寫作。',
+  role: '經濟學與統計學雙主修大學生',
+  affiliation: '威廉斯學院（Williams College）',
+  location: '美國麻州威廉斯敦',
+  quote: '所有的判斷，就其本質而言，都是統計。——C. R. Rao',
+  bio: [
+    '我是來自台灣的大學生，目前就讀<strong>威廉斯學院（Williams College）經濟學與統計學系（2029 級）</strong>。我關心 AI 如何協助人類做決策（包括因果推論），以及 AI 將如何影響經濟成長與不平等。',
+
+    '我計畫攻讀總體經濟學或 AI 的博士學位。這個網站收錄了我的研究，還有一個部落格，讓我把正在讀、正在想的其他事情寫下來。',
+
+    '閒暇時，我喜歡寫短篇小說和玩桌遊。我在《現代藝術》（Modern Art）這款桌遊上，已經連勝三年了。',
+  ],
+  interests: ['總體經濟學', '因果推論', 'AI 賦能科學'],
+  nav: [
+    { label: '研究', href: '/research/' },
+    { label: '部落格', href: '/blog/' },
+    { label: '履歷', href: '/cv.pdf' },
+  ],
+};
+
+/** Everything in `site`, in the given language. */
+export const siteFor = (lang: 'en' | 'zh'): typeof site =>
+  lang === 'zh' ? { ...site, ...siteZh } : site;

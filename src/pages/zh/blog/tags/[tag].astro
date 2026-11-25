@@ -1,0 +1,19 @@
+---
+import TagPosts from '../../../../views/TagPosts.astro';
+import { allTags, getPosts, tagSlug, type Post } from '../../../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts('zh');
+  return allTags(posts).map(({ tag, slug }) => ({
+    params: { tag: slug },
+    props: {
+      tag,
+      posts: posts.filter((post) => post.data.tags.some((t) => tagSlug(t) === slug)),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props as { tag: string; posts: Post[] };
+---
+
+<TagPosts tag={tag} posts={posts} />

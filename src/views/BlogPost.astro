@@ -1,0 +1,86 @@
+---
+// One blog post. Used by src/pages/blog/[...id].astro and its /zh/ copy.
+import { render } from 'astro:content';
+import 'katex/dist/katex.min.css';
+import Base from '../layouts/Base.astro';
+import { formatDate, isChinese, isTranslation, readingTime, tagSlug, type Post } from '../lib/posts';
+import { getLang, htmlLang, localize, t, term } from '../i18n';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const lang = getLang(Astro.url);
+const text = t(lang);
+const { Content, headings } = await render(post);
+const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+const minutes = readingTime(post.body);
+// An untranslated post keeps its own language (e.g. a Chinese post on the English site).
+const postLang = isChinese(post.data.title) ? htmlLang.zh : htmlLang.en;
+const translated = isTranslation(post);
+---
+
+<Base title={post.data.title} description={post.data.description} type="article">
+  <article lang={postLang === htmlLang[lang] ? undefined : postLang}>
+    <header class="post-header">
+      <h1>{post.data.title}</h1>
+      <p class="post-meta" lang={htmlLang[lang]}>
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, true, lang)}</time>
+        · {text.minRead(minutes)}
+        {post.data.draft && <Fragment> · {text.draft}</Fragment>}
+        {
+          post.data.tags.length > 0 && (
+            <Fragment>
+              {' · '}
+              {post.data.tags.map((tag, i) => (
+                <Fragment>
+                  {i > 0 && (lang === 'zh' ? '、' : ', ')}
+                  <a href={localize(`/blog/tags/${tagSlug(tag)}/`, lang)}>{term(tag, lang)}</a>
+                </Fragment>
+              ))}
+            </Fragment>
+          )
+        }
+      </p>
+      {
+        post.data.updated && (
+          <p class="post-meta" lang={htmlLang[lang]}>
+            {text.updated} {formatDate(post.data.updated, true, lang)}
+          </p>
+        )
+      }
+      {
+        translated && (
+          <p class="post-meta">
+            {text.translatedNote}
+            <a href={`/blog/${post.id}/`} hreflang="en">{text.originalLink}</a>
+          </p>
+        )
+      }
+    </header>
+
+    {
+      toc.length >= 3 && (
+        <details class="toc">
+          <summary lang={htmlLang[lang]}>{text.contents}</summary>
+          <ol>
+            {toc.map((heading) => (
+              <li class={`depth-${heading.depth}`}>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ol>
+        </details>
+      )
+    }
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="post-footer" lang={htmlLang[lang]}>
+      <a href={localize('/blog/', lang)}>{text.allPosts}</a>
+    </footer>
+  </article>
+</Base>

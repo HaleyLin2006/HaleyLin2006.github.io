@@ -25,7 +25,7 @@ npm run preview  # preview the built site
 | Blog posts | `src/content/blog/*.md` |
 | Colours, fonts, spacing | top of `src/styles/global.css` |
 | Site address (for RSS and sitemap) | `site` in `astro.config.mjs` |
-| Intro line on the Research page | `src/pages/research.astro` |
+| Intro line on the Research page | `researchIntro` in `src/i18n.ts` |
 | Tab icon | `public/favicon.jpg` (linked in `src/layouts/Base.astro`) |
 
 To offer a PDF of your CV, save it as `public/cv.pdf` and set `cvPdf: '/cv.pdf'` in `src/site.ts`.
@@ -54,6 +54,22 @@ Your text here, in Markdown.
 
 `src/content/blog/euler-equation.md` shows all of these in use.
 
+## Chinese version (中文)
+
+The whole site also exists in Traditional Chinese at `/zh/` (e.g. `/zh/research/`). The 中文 / EN button in the header switches to the same page in the other language.
+
+| To change the Chinese | Edit |
+| --- | --- |
+| Bio, role, location, quote, nav | `siteZh` in `src/site.ts` |
+| News | the `zh` text of each item in `src/data/news.ts` (link to `/zh/...` pages) |
+| Paper venue and abstract | `venueZh` and `abstractZh` in `src/data/research.ts` (titles stay in English) |
+| Buttons, labels, page intros, tag names | `ui` and `terms` in `src/i18n.ts` |
+| Blog posts | `src/content/blog-zh/*.md` |
+
+To translate a post, add a file with the **same file name** to `src/content/blog-zh/`, with the same `date` and the same English `tags` (tags are translated for display through `terms`). The Chinese site shows the translation with a link to the original. A post with no translation, like one already written in Chinese, appears on both sites as written.
+
+Anything without a Chinese version falls back to the English.
+
 ## Add a paper
 
 Add an entry to the `papers` list in `src/data/research.ts`. Set `selected: true` to also show it on the home page. Put PDFs in `public/papers/` and link them as `/papers/file.pdf`.
@@ -77,8 +93,11 @@ src/
   site.ts              your details
   data/                research.ts, news.ts
   content/blog/        posts (Markdown)
+  content/blog-zh/     Chinese translations of posts
+  i18n.ts              English / Chinese words and link helpers
+  views/               the pages' content, shared by the English and /zh/ pages
   content.config.ts    the fields a post can have
-  pages/               one file per page; blog/ holds the post and tag pages
+  pages/               one file per page; blog/ holds the post and tag pages; zh/ the Chinese copies
   layouts/Base.astro   shared page shell (head, header, footer)
   components/          header, footer, paper list, post list
   lib/posts.ts         sorting, dates, tags, reading time
