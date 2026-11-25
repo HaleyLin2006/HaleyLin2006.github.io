@@ -5,7 +5,7 @@ description: A list of questions on my mind.
 tags: [Macroeconomics, Machine Learning]
 ---
 
-Feynmann has his twelve favorite questions that he keeps in his mind. Right now, I don't really have twelve questions that I think about, but here's my attempt to list some of them.
+Feynman has his twelve favorite questions that he keeps in his mind. Right now, I don't really have twelve questions that I think about, but here's my attempt to list some of them.
 
 ## Big Questions
 
@@ -17,7 +17,7 @@ Feynmann has his twelve favorite questions that he keeps in his mind. Right now,
 
     How can we explain the immense predictive gains of modern AI in terms of the data and the architecture? How can understanding modern AI systems inform science, and vice versa? I am interested in developing explainable AI techniques within specific scientific settings, and think about how applications in these settings inform us how neural networks work.
 
-3. **Macroeconmics of Technology**
+3. **Macroeconomics of Technology**
 
 <!-- - employment and creation of new tasks
 - sector change

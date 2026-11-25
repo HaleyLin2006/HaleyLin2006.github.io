@@ -20,12 +20,13 @@ npm run preview  # preview the built site
 | Name, bio, email, profile links, nav | `src/site.ts` |
 | Home-page photo, quote, icon links | `photo`, `quote`, `links` in `src/site.ts` (put the photo in `public/images/`) |
 | Papers and projects | `src/data/research.ts` |
-| CV entries | `src/data/cv.ts` |
+| News box on the home page | `src/data/news.ts` |
+| CV (PDF) | replace `public/cv.pdf` |
 | Blog posts | `src/content/blog/*.md` |
 | Colours, fonts, spacing | top of `src/styles/global.css` |
 | Site address (for RSS and sitemap) | `site` in `astro.config.mjs` |
 | Intro line on the Research page | `src/pages/research.astro` |
-| Tab icon | `public/favicon.svg` |
+| Tab icon | `public/favicon.jpg` (linked in `src/layouts/Base.astro`) |
 
 To offer a PDF of your CV, save it as `public/cv.pdf` and set `cvPdf: '/cv.pdf'` in `src/site.ts`.
 
@@ -74,7 +75,7 @@ Notes:
 ```
 src/
   site.ts              your details
-  data/                research.ts, cv.ts
+  data/                research.ts, news.ts
   content/blog/        posts (Markdown)
   content.config.ts    the fields a post can have
   pages/               one file per page; blog/ holds the post and tag pages

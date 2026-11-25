@@ -5,7 +5,7 @@ description: A Collection of Model UN Background Guides I was Involved In.
 tags: [Personal]
 ---
 
-I used to do a lot of Model UN in highschool (see list below). Here's an archive of background guides I was involved in, in order of how proud I am looking back. 
+I used to do a lot of Model UN in high school (see list below). Here's an archive of background guides I was involved in, in order of how proud I am looking back. 
 
 Taiwanese MUN is very different from the US. I still remember the time where we read hundreds of pages of UN speech records and rules of procedure in hope to make the conference as realistic as possible. I'm proud that all of these are done before the age of AI.
 

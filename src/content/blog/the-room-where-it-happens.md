@@ -9,7 +9,7 @@ tags: [Personal, Origin Story]
 
 The new off-broadway show Data inspires me in framing my future career role as an architect of the relationship among human, data, and society in the age of surveillance capitalism. 
 
-Modern “machine intelligence” is reaching a tipping point of no return. I am not talking about AGI, although that could be interesting on its own -- but rather the mere increment of the predictive power of algorithms. Even without AGI, this predictive power of the new algorithms alone is enough to change the relationship of individuals with society and become the next nuclear weapon of the 21th century.
+Modern “machine intelligence” is reaching a tipping point of no return. I am not talking about AGI, although that could be interesting on its own -- but rather the mere increment of the predictive power of algorithms. Even without AGI, this predictive power of the new algorithms alone is enough to change the relationship of individuals with society and become the next nuclear weapon of the 21st century.
 
 Data tells two engineers' moral struggle in becoming whistleblowers of their company's government contract in developing mass surveillance projects. The play reveals two central moral concerns -- one is in the data collection, another is in the extraction of information and decisions based on the data.
 
