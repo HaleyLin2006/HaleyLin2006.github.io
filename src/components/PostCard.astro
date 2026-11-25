@@ -2,7 +2,7 @@
 // One blog post as a card, styled like the research cards. The whole card
 // links to the post: title, then date | reading time | tags, then the description.
 import { tagColor } from '../data/research';
-import { formatDate, readingTime, type Post } from '../lib/posts';
+import { formatDate, readingLabel, type Post } from '../lib/posts';
 
 interface Props {
   post: Post;
@@ -18,7 +18,7 @@ const { title, date, description, tags } = post.data;
       <h3 class="card-title">{title}</h3>
       <div class="card-info">
         <time datetime={date.toISOString()}>{formatDate(date)}</time>
-        <span>{readingTime(post.body)} min read</span>
+        <span>{readingLabel(post)}</span>
         {
           tags.length > 0 && (
             <span class="card-tags">
